@@ -13,7 +13,7 @@ const FindRecipee = () => {
     .then((res)=>{
       setList(...list,res.data.recipes)
     })
-  },[list])
+  },[])
   const handler=(e)=>{
     setQuery(e.target.value)
   }
