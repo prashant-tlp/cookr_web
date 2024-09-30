@@ -9,9 +9,9 @@ const FindRecipee = () => {
   const [list,setList]=useState([])
 
   useEffect(()=>{
-    axios.get('http://localhost:5000/user/recipees')
+    axios.get('https://dummyjson.com/recipes')
     .then((res)=>{
-      setList(...list,res.data.result)
+      setList(...list,res.data.recipes)
     })
   },[])
   const handler=(e)=>{
@@ -37,7 +37,7 @@ const FindRecipee = () => {
             <div className=" h-36 w-3/5 sm:w-1/2 md:shrink-0">
               <img
                 className="h-full w-full  bg-cover bg-center hover:h-full hover:w-full hover:z-auto md:h-full md:w-full"
-                src={require(`../images/${v.image}`)}
+                src={`${v.image}`}
                 alt="Modern building architecture"
               />
             </div>

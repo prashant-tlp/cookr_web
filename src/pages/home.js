@@ -32,9 +32,11 @@ function Home() {
   
     const getData=()=>{
       setLoading(true)
-      axios.get('http://localhost:5000/user/recipees')
+      axios.get('https://dummyjson.com/recipes')
       .then((res)=>{
-        setList(...list,res.data.result)
+        setList(...list,res.data.recipes)
+        console.log("response",res)
+        console.log("lisst-->",list)
         setLoading(false)
       })
       .catch((err)=>{
@@ -46,7 +48,7 @@ function Home() {
   
     }
     useEffect(()=>{
-      getData()
+      getData();
     },[])
   return (
     <div>
@@ -71,12 +73,13 @@ function Home() {
 
       <div className=" sm:grid sm:grid-cols-3 gap-1">
         {list.map((v,i)=>
-          <div key={v._id} className="m-1  bg-white rounded-xl shadow-md overflow-hidden ">
+          <div key={i} className="m-1  bg-white rounded-xl shadow-md overflow-hidden ">
           <div  className="m-4 flex ">
             <div className=" h-36 w-3/5 sm:w-1/2 md:shrink-0">
               <img
                 className="h-full w-full  bg-cover bg-center hover:h-full hover:w-full hover:z-auto md:h-full md:w-full"
-                src={require(`../images/${v.image}`)}
+                // src={require(`../images/${v.image}`)}
+                src={`${v.image}`}
                 alt="Modern building architecture"
               />
             </div>
