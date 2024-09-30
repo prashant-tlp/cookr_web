@@ -32,6 +32,7 @@ function Home() {
   
     const getData= useCallback (()=>{
       setLoading(true)
+      
       axios.get('https://dummyjson.com/recipes')
       .then((res)=>{
         setList(...list,res.data.recipes)
@@ -49,7 +50,7 @@ function Home() {
     },[list])
     useEffect(()=>{
       getData();
-    },[list,getData])
+    },[])
   return (
     <div>
       {isLoading ?( <Loading/>) :
