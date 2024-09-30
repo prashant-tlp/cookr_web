@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect,useCallback, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import axios from "axios";
@@ -28,9 +28,9 @@ function Home() {
           setLogin(false)
         }
 
-    })
+    },[])
   
-    const getData=()=>{
+    const getData= useCallback (()=>{
       setLoading(true)
       axios.get('https://dummyjson.com/recipes')
       .then((res)=>{
@@ -46,10 +46,10 @@ function Home() {
         
       })
   
-    }
+    },[list])
     useEffect(()=>{
       getData();
-    },[])
+    },[list,getData])
   return (
     <div>
       {isLoading ?( <Loading/>) :
